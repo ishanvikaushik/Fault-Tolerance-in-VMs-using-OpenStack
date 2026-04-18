@@ -1,12 +1,15 @@
 #!/bin/bash
 
-# Load credentials
+echo "Loading OpenStack credentials..."
 source openrc admin admin
 
-# Create VMs
+echo "Creating VMs..."
+
 openstack server create --flavor m1.small --image cirros --network private vm1
 openstack server create --flavor m1.small --image cirros --network private vm2
 openstack server create --flavor m1.small --image cirros --network private vm3
 
-# Show status
+sleep 5
+
+echo "Checking VM status..."
 openstack server list
